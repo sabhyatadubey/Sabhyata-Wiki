@@ -6,9 +6,8 @@ This wiki is built for agents, not humans. It compiles operational knowledge fro
 
 ## Owner
 
-<!-- CUSTOMIZE: Replace with your information -->
-Your Name, Your Role, Your Company. Location.
-Primary source channel: YOUR_CHANNEL_ID
+Sabhyata, CRM Executive, Justlife. India.
+Primary source channel: D060DM1A9FT
 
 ## Article format
 
