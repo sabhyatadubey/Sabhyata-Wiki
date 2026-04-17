@@ -9,16 +9,9 @@ You are doing a one-time bootstrap job. You will populate this repo with a struc
 ## STEP 1 — CONFIGURE
 
 <!-- CUSTOMIZE: Set your data source -->
-**Primary source:** Slack channel `YOUR_CHANNEL_ID`
-**Date range:** Fetch all messages from `YYYY-MM-DD` onwards
-**Source type:** Daily briefings / standup updates / operational notes
-
-<!-- CUSTOMIZE: If not using Slack, replace Step 3 below with your data source.
-Examples:
-- "Read the last 30 messages from my Apple Notes"
-- "Read the Google Doc at [URL]"
-- "I'll paste my meeting notes below: [paste]"
--->
+**Primary source:** Slack channel `D060DM1A9FT`
+**Date range:** Fetch all messages from `2026-01-01` onwards
+**Source type:** Daily CRM updates, campaign briefings, and operational notes from Sabhyata (CRM Executive, Justlife, India)
 
 ## STEP 2 — CREATE FOLDER STRUCTURE
 
@@ -28,44 +21,43 @@ mkdir -p workstreams people experiments decisions metrics
 
 ## STEP 3 — FETCH SOURCE MATERIAL
 
-Use the Slack MCP tool to read channel `YOUR_CHANNEL_ID`. Fetch all messages using pagination until you have everything from your start date onwards. These are your source of truth. Do not invent or assume anything not explicitly stated in these messages.
-
-<!-- CUSTOMIZE: If using a different source, replace this step. The key requirement is that you end up with a chronological record of decisions, updates, and context. -->
+Use the Slack MCP tool to read channel `D060DM1A9FT`. Fetch all messages using pagination until you have everything from 2026-01-01 onwards. These are your source of truth. Do not invent or assume anything not explicitly stated in these messages.
 
 ## STEP 4 — CREATE ARTICLES
 
 For each category below, extract everything relevant from the source history and write structured articles. Use only what appears in the source. Be specific. Include real numbers. Every article must have YAML frontmatter, content body, and a Backlinks section.
 
 ### Workstreams
-<!-- CUSTOMIZE: List your workstreams. Examples: -->
 
-**workstreams/[name].md** — Include: current status, active campaigns or initiatives, key metrics, blockers, open items. Key people involved.
+**workstreams/retention.md** — Include: current retention rate, active retention campaigns, churn signals, interventions in progress, blockers, open items.
 
-<!-- Add one entry per workstream. Be specific about what to extract:
-workstreams/product-launch.md — Include: launch timeline, feature list, blockers, go/no-go criteria, QA status. Key people: [names].
-workstreams/growth.md — Include: channel performance, CAC by channel, active experiments, weekly targets. Key people: [names].
-workstreams/partnerships.md — Include: active deals, pipeline status, revenue share terms, open negotiations. Key people: [names].
--->
+**workstreams/reengagement.md** — Include: lapsed customer segments being targeted, campaign mechanics, reactivation rate, active outreach, results to date.
+
+**workstreams/email-sms.md** — Include: active email and SMS campaigns, send volumes, open rates, CTR, conversion rates, upcoming sends, A/B tests running.
+
+**workstreams/loyalty-program.md** — Include: program status, active tiers or rewards, member counts, redemption rates, open items.
+
+**workstreams/segmentation.md** — Include: active customer segments, segmentation logic, how segments feed into campaigns, any data quality issues.
+
+**workstreams/onboarding.md** — Include: new customer onboarding flow, drop-off points, activation rate, open items and improvements in progress.
 
 ### People
-<!-- CUSTOMIZE: List the people to track. Examples: -->
 
-**people/[name].md** — Include: role, ownership areas, all open items assigned to them across all source messages, delivery patterns (items carried over multiple days), bandwidth flags.
+**people/sabhyata.md** — Include: role (CRM Executive), ownership areas (retention, re-engagement, email/SMS, loyalty, segmentation, onboarding), open items, decisions made, key initiatives owned.
 
-<!-- Add one entry per person:
-people/alice.md — Include: role (engineering lead), ownership areas (API, infrastructure), open items, sprint commitments vs delivery.
-people/bob.md — Include: role (product manager), ownership areas (roadmap, stakeholder comms), open items, decision patterns.
--->
+Extract any other team members mentioned in the source messages and create a people article for each. Include their role, ownership areas, open items assigned to them, and delivery patterns observed.
 
 ### Experiments
-<!-- CUSTOMIZE: List any active or recent experiments. Examples: -->
 
-**experiments/[name].md** — Include: hypothesis, mechanic, result (with numbers), status (Active / Resolved), next steps.
+Extract every CRM experiment mentioned in the source. For each, create **experiments/[name].md** including: hypothesis, mechanic (audience, channel, variant), results with numbers (open rate, CTR, conversion, reactivation %), status (Active / Resolved), and next step.
 
-<!-- Add one entry per experiment:
-experiments/pricing-test-q1.md — Include: hypothesis (higher price = same conversion), variant details, conversion numbers, revenue impact, decision made.
-experiments/onboarding-flow-v2.md — Include: hypothesis (shorter flow = higher activation), funnel metrics, drop-off rates, status.
--->
+Examples of what to look for:
+- Email subject line A/B tests
+- SMS vs email channel comparisons
+- Discount vs no-discount re-engagement tests
+- Loyalty reward structure experiments
+- Onboarding sequence timing tests
+- Push notification experiments
 
 ### Decisions Log
 
@@ -82,7 +74,7 @@ Extract every clear decision from all source messages in chronological order.
 
 ### Metrics
 
-**metrics/definitions.md** — Define every metric mentioned across all source messages. For each: name, definition as used at your company, current benchmark or target.
+**metrics/definitions.md** — Define every CRM metric mentioned across source messages. At minimum define: Retention Rate, Churn Rate, Repeat Booking Rate, Reactivation Rate, Email Open Rate, Email CTR, SMS CTR, Campaign Conversion Rate, CLV (Customer Lifetime Value), NPS, Loyalty Redemption Rate. For each: name, definition as used at Justlife, current benchmark or target.
 
 **metrics/weekly-benchmarks.md** — Extract every number mentioned as a target or threshold. Format as a table: Metric | Target/Threshold | Source | Date mentioned.
 
